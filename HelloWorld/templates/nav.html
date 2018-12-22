@@ -1,0 +1,88 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Index</title>
+	<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css">
+	<script type="text/javascript" src="../static/js/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="../static/js/bootstrap.min.js"></script>
+	<style type="text/css">
+		body:before{
+			content: '';
+			position: absolute;
+			top: 0px;
+			bottom: 0px;
+			right: 0px;
+			left: 0px;
+			z-index: -1;
+			opacity: 0.9;
+			background-image: url({% static 'bg.jpg' %});
+		}
+		.row{margin:0px;
+			 margin-right: 5px;}
+		.vessel{
+			margin:0 auto;
+			max-width: 1080px;
+		}
+		p[class='navbar-text navbar-left']>a{text-decoration: none;}
+		a{color:#777;}
+		a:hover   {color:purple;}
+
+	</style>
+</head>
+<body>
+	<div class="vessel">
+		<nav class="navbar navbar-default" role="navigation">
+	    <div class="container-fluid">
+	    <div class="navbar-header">
+	        <a class="navbar-brand" href="/index">LapBlogs</a>
+	    </div>
+	    <div>
+	    	<p class="navbar-text navbar-left"><a href="#">Vue</a></p>
+	        <p class="navbar-text navbar-left"><a href="#">React</a></p>
+	        <p class="navbar-text navbar-left"><a href="#">Php</a></p>
+	        <p class="navbar-text navbar-left"><a href="#">Java</a></p>
+	        <p class="navbar-text navbar-left"><a href="#">Python</a></p>
+	        <p class="navbar-text navbar-left"><a href="#">Books</a></p>
+	        <!--向左对齐-->
+	        <ul class="nav navbar-nav navbar-left">
+	            <li class="dropdown">
+	                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+	                    Tools
+	                    <b class="caret"></b>
+	                </a>
+	                <ul class="dropdown-menu">
+	                    <li><a href="#">Github</a></li>
+	                    <li><a href="#">Git</a></li>
+	                    <li><a href="#">CSDN</a></li>
+	                    <li><a href="#">StackOverflow</a></li>
+	                </ul>
+	            </li>
+	        </ul>
+
+	        <!--向右对齐-->
+	        <ul class="nav navbar-nav navbar-right">
+	            <li class="dropdown">
+	                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+	                    登录/注册 <b class="caret"></b>
+	                </a>
+	                <ul class="dropdown-menu">
+	                    <li align="center"><a href="/login">登录</a></li>
+	                    <li align="center"><a href="/register">注册</a></li>
+	                </ul>
+	            </li>
+	        </ul>
+	        <form class="navbar-form navbar-right" role="search">
+	        	<input type="" name="" class="form-control">
+	            <button type="submit" class="btn btn-default">
+	                搜索
+	            </button>
+	        </form>
+	        <!-- <p class="navbar-text navbar-right">向右对齐-文本</p> -->
+	    </div>
+	    </div>
+	</nav>
+	{% block mainbody %}
+    {% endblock %}
+</body>
+</html>

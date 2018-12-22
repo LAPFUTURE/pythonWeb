@@ -21,8 +21,15 @@ Including another URLconf
 # ]
 from django.conf.urls import url
  
-from . import view
- 
+from . import view,search,search2
+
 urlpatterns = [
+	url(r'^$', view.index),
+	url(r'^index$', view.index),
     url(r'^hello$', view.hello),
+    url(r'^login$', view.login),
+    url(r'^register$', view.register),
+    url(r'^searchform$', search.searchform),
+    url(r'^search$', search.search),
+    url(r'^search-post$', search2.search_post),
 ]
