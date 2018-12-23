@@ -7,3 +7,4 @@ def search_post(request):
     if request.POST:
         ctx['rlt'] = request.POST['q']
     return render(request, "post.html", ctx)
+

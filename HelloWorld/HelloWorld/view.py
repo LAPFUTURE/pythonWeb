@@ -15,17 +15,17 @@ def hello(request):
     context['script'] = '<script>alert(123);</script>'
     return render(request, 'hello.html', context)
 
-def login(request):
-	test1 = User(number='123@qq.com',password='123456')
-	test1.save()
+# def login(request):
+# 	test1 = User(number='123@qq.com',password='123456')
+# 	test1.save()
 
-	context = {}
-	context['request_path'] = request.path
-	if context['request_path'] == '/login':
-		context['error_message'] = 'yes'
-	else:
-		context['error_message'] = 'no'
-	return render(request,'login.html',context)
+# 	context = {}
+# 	context['request_path'] = request.path
+# 	if context['request_path'] == '/login':
+# 		context['error_message'] = 'yes'
+# 	else:
+# 		context['error_message'] = 'no'
+# 	return render(request,'login.html',context)
 
 def register(request):
 	return render_to_response('register.html')
