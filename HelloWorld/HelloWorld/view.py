@@ -3,9 +3,34 @@ from django.shortcuts import render_to_response
 from django.shortcuts import render
 from TestModel.models import Test
 from UserModel.models import User
+from BlogModel.models import Blog
+from ResourceClassModel.models import ResourceClass
+
 
 def index(request):
-	return render_to_response('index.html')
+    context = {}
+    list = ResourceClass.objects.all()
+    context['list'] = list
+
+    vueBlogs = Blog.objects.filter(categoryId=1)
+    context['vueBlogs'] = vueBlogs
+
+    reactBlogs = Blog.objects.filter(categoryId=2)
+    context['reactBlogs'] = reactBlogs
+
+    phpBlogs = Blog.objects.filter(categoryId=3)
+    context['phpBlogs'] = phpBlogs
+
+    javaBlogs = Blog.objects.filter(categoryId=4)
+    context['javaBlogs'] = javaBlogs
+
+    pythonBlogs = Blog.objects.filter(categoryId=5)
+    context['pythonBlogs'] = pythonBlogs
+
+    books = Blog.objects.filter(categoryId=6)
+    context['books'] = books
+
+    return render(request, 'index.html', context)
 
 def hello(request):
     context          = {}
@@ -15,18 +40,10 @@ def hello(request):
     context['script'] = '<script>alert(123);</script>'
     return render(request, 'hello.html', context)
 
-# def login(request):
-# 	test1 = User(number='123@qq.com',password='123456')
-# 	test1.save()
-
-# 	context = {}
-# 	context['request_path'] = request.path
-# 	if context['request_path'] == '/login':
-# 		context['error_message'] = 'yes'
-# 	else:
-# 		context['error_message'] = 'no'
-# 	return render(request,'login.html',context)
-
-def register(request):
-	return render_to_response('register.html')
+def download(request):
+    response = {}
+    if request.GET:
+        id = request.GET.get('id')
+        response['id'] = id
+    return response
 

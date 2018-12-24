@@ -17,6 +17,7 @@
 			z-index: -1;
 			opacity: 0.9;
 			background-image: url({% static 'bg.jpg' %});
+			background-size: cover;
 		}
 		.row{margin:0px;
 			 margin-right: 5px;}
@@ -39,12 +40,9 @@
 	        <a class="navbar-brand" href="/index">LapBlogs</a>
 	    </div>
 	    <div>
-	    	<p class="navbar-text navbar-left"><a href="#">Vue</a></p>
-	        <p class="navbar-text navbar-left"><a href="#">React</a></p>
-	        <p class="navbar-text navbar-left"><a href="#">Php</a></p>
-	        <p class="navbar-text navbar-left"><a href="#">Java</a></p>
-	        <p class="navbar-text navbar-left"><a href="#">Python</a></p>
-	        <p class="navbar-text navbar-left"><a href="#">Books</a></p>
+	    	{% for item in list %}
+			    <p class="navbar-text navbar-left"><a href="#{{ item.name }}">{{ item.name }}</a></p>
+			{% endfor %}
 	        <!--向左对齐-->
 	        <ul class="nav navbar-nav navbar-left">
 	            <li class="dropdown">
@@ -70,6 +68,7 @@
 	                <ul class="dropdown-menu">
 	                    <li align="center"><a href="/login">登录</a></li>
 	                    <li align="center"><a href="/register">注册</a></li>
+	                    <li align="center"><a href="/register">注销</a></li>
 	                </ul>
 	            </li>
 	        </ul>

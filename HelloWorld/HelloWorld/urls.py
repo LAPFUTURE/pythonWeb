@@ -21,15 +21,14 @@ Including another URLconf
 # ]
 from django.conf.urls import url
  
-from . import view,search,search2,login
+from . import view,login,register,blog
 
 urlpatterns = [
 	url(r'^$', view.index),
 	url(r'^index$', view.index),
+    url(r'^blog/$', blog.blog),
     url(r'^hello$', view.hello),
     url(r'^login$', login.login),
-    url(r'^register$', view.register),
-    url(r'^searchform$', search.searchform),
-    url(r'^search$', search.search),
-    url(r'^search-post$', search2.search_post),
+    url(r'^register$', register.register),
+    url(r'^download$', view.download),
 ]

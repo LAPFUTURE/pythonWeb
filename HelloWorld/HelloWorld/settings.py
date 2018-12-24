@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'TestModel',
     'UserModel',
+    'ResourceClassModel',
+    'BlogModel'
 ]
 
 MIDDLEWARE = [

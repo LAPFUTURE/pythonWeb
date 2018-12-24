@@ -1,4 +1,5 @@
 {%extends "nav.html" %}
+{%load static %}
 {% block mainbody %}
 <style type="text/css">
 	.left{
@@ -6,18 +7,156 @@
 		height: calc(100vh - 72px);
 		margin-right: 5px;
 		border-radius: 5px;
+		font-size: 1.2em;
+		display: flex;
+		flex-wrap: wrap;
+		overflow: auto;
+	}
+
+	.left::-webkit-scrollbar{
+		width: 5px;
+	    height: 10px;
+	    border-radius: 5px;
+	    background-color: rgb(240,240,240,0.618);
+	}
+	.left::-webkit-scrollbar-thumb{
+	    height: 10px;
+	    border-radius: 5px;
+	    -webkit-box-shadow: inset 0 0 6px rgb(240,240,240,0.618);
+	    background-color:rgb(214,242,238,1);
+	}/*自定义滚动条*/
+	
+	div[class~='left']>div{
+		margin:10px auto;
+		padding:5px;
+		width: 200px;
+		border-radius: 5px;
+		background-color: rgb(240,240,240,0.618);
+	}
+
+	div[class~='left']>div:hover{
+		width: 202px;
+		background-color: rgb(240,240,240,0.85);
+	}
+
+	div[class~='left']>div>a>img{
+		width: 50%;
+		margin:0 25%;
 	}
 	.right{
+		scroll-behavior: smooth;
 		background-color: rgb(240,240,240,0.50);
 		height: calc(100vh - 72px);
 		margin-right: -5px;
 		border-radius: 5px;
+		overflow:auto;
+	}
+	.right::-webkit-scrollbar{
+		width: 5px;
+	    height: 10px;
+	    border-radius: 5px;
+	    background-color: rgb(240,240,240,0.618);
+	}
+	.right::-webkit-scrollbar-thumb{
+	    height: 10px;
+	    border-radius: 5px;
+	    -webkit-box-shadow: inset 0 0 6px rgb(240,240,240,0.618);
+	    background-color:rgb(214,242,238,1);
+	}
+
+	.introduce{
+		margin-top:10px;
+		height: 700px;
+		border-radius: 5px;
+	}
+	.introduce>textarea{
+		padding: 10px;
+		text-indent: 2em;
+		font-size: 18px;
+		border-radius: 5px;
+		height: 600px;
+		background-color: rgb(255,255,255,0.618);
+	}
+	.items{
+		border-radius: 5px;
+		margin-top: 10px;
+	}
+	.items>div{
+		height: 250px;
+		border-radius: 5px;
+		background-color: rgb(255,255,255,0.618);
+		margin-top: 10px;
+	}
+	ul>li>a:hover{
+		text-decoration: none;
+		font-size: 15px;
 	}
 </style>
 <div class="row">
 	<div class="col-md-3 left">
-		dsa
+			{% for item in list %}
+					<div>
+						<p>{{ item.name }}</p><a href="#{{ item.name }}">
+						<img src="{{ item.item }}"></a>
+					</div>
+			{% endfor %}
 	</div>
-	<div class="col-md-9 right">dsad</div>
+	<div class="col-md-9 right">
+		<div class="col-md-12 introduce">
+			<h3>LAPFUTUTE</h3>
+			<textarea class="col-md-10 col-md-offset-1" disabled="disabled">My name is lap.I have been loving JS since this 2018 March.Why I like JS?
+			Becase of Python is useful.
+			</textarea>
+		</div>
+		<div class="items col-md-12" >
+			{% for item in list %}
+				<div class="col-md-12" id="{{ item.name }}">
+					<h3>{{ item.name }}</h3>
+						<ul>
+							{% ifequal item.name  'Vue' %}
+								{% for blog in vueBlogs %}
+									<li><a href="/blog?id={{ blog.id }}">{{ blog.remark }}</li></a>
+							    {% endfor %}
+							{% endifequal %}
+						</ul>
+						<ul>
+							{% ifequal item.name  'React' %}
+								{% for blog in reactBlogs %}
+									<li><a href="/blog?id={{ blog.id }}">{{ blog.remark }}</li></a>
+							    {% endfor %}
+							{% endifequal %}
+						</ul>
+						<ul>
+							{% ifequal item.name  'Php' %}
+								{% for blog in phpBlogs %}
+									<li><a href="/blog?id={{ blog.id }}">{{ blog.remark }}</li></a>
+							    {% endfor %}
+							{% endifequal %}
+						</ul>
+						<ul>
+							{% ifequal item.name  'Java' %}
+								{% for blog in javaBlogs %}
+									<li><a href="/blog?id={{ blog.id }}">{{ blog.remark }}</li></a>
+							    {% endfor %}
+							{% endifequal %}
+						</ul>
+						<ul>
+							{% ifequal item.name  'Python' %}
+								{% for blog in pythonBlogs %}
+									<li><a href="/blog?id={{ blog.id }}">{{ blog.remark }}</li></a>
+							    {% endfor %}
+							{% endifequal %}
+						</ul>
+						<ul>
+							{% ifequal item.name  'Books' %}
+								{% for book in books %}
+									<li><a href="{{ book.remark }}">{{ book.content }}/download?id={{ book.id }}</li></a>
+							    {% endfor %}
+							{% endifequal %}
+						</ul>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
 </div>
 {% endblock %}
